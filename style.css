@@ -1,0 +1,417 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+header{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: aquamarine;
+    background-color: transparent;
+    position: relative;
+    padding:20px 40px;
+    z-index: 111;
+}
+a{
+    text-decoration: none;
+    color:green;
+}
+nav{
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+}
+.logo{
+    display: flex;
+    /* padding-right: 2rem; */
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+.carousel{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    margin-top: -50px;
+}
+
+.carousel .list .item{
+    position: absolute;
+    inset: 0 0 0 0;
+    height: 100%;
+    width: 100%;
+}
+.carousel .list .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.carousel .list .item .content{
+    position: absolute;
+    width:1140px;
+    max-width: 80%;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    box-sizing: border-box;
+    padding-right: 30%;
+    text-shadow: 0 5px 10px #0000;
+}
+.carousel .list .item .content .intro{
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    color: rgb(245, 239, 239);
+}
+.carousel .list .item .content .name{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: green;
+
+}
+.carousel .list .item .content .post{
+    font-size: 2rem;
+    padding: 10px 0;
+}
+.carousel .list .item .content .text{
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+.carousel .list .item .content .buttons{
+    display: grid;
+    grid-template-columns: repeat(2, 140px);
+    grid-template-rows:45px ;
+    gap: 10px;
+    margin-top:40px;
+}
+.carousel .list .item .content .buttons button{
+    background-color: red;
+    border: none;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: #fff;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.carousel .list .item .content .buttons button:nth-child(2){
+    background-color: transparent;
+    color: #eee;
+    border: 1px solid #eee;
+}
+
+
+.thumbnail {
+    display: flex;
+    position: absolute;
+    width: max-content;
+    left: 50%;
+    bottom: 50px;
+    z-index: 111;
+    gap: 20px;
+}
+.thumbnail .item{
+    width:150px ;
+    height: 220px;
+    position: relative;
+    flex-shrink: 0;
+}
+.thumbnail .item img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.thumbnail .item .content{
+    position: absolute;
+    color: #eee;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+}
+.thumbnail .item .content .title{
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+.thumbnail .item .content .description{
+    font-weight: 300;
+    margin-bottom: 10px;
+    font-size: 1.1;
+}
+
+.arrows {
+    position: absolute;
+    width: 300px;
+    max-width: 30%;
+    display: flex;
+    top: 80%;
+    right: 52%;
+    gap: 15px;
+    z-index: 111;
+    align-items: center;
+
+}
+.arrows button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #eee4;
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+    font-size:2rem;
+    color: #fff;
+    transition: all 0.5s ;
+}
+.arrows button:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+/* animation */
+.carousel .list .item:nth-child(1){
+    z-index: 1;
+}
+/* /* animation text in first item */
+.carousel .list .item:nth-child(1) .content .intro,
+.carousel .list .item:nth-child(1) .content .name,
+.carousel .list .item:nth-child(1) .content .post,
+.carousel .list .item:nth-child(1) .content .text,
+.carousel .list .item:nth-child(1) .content .buttons{
+    transform: translateY(50px);
+    opacity: 0;
+    filter: blur(20px);
+    animation: showContent 0.5s 1s linear 1 forwards;
+}
+
+@keyframes showContent{
+    to{
+        transform: translateY(0px);
+        opacity: 1;
+        filter: blur(0px);
+    }
+}
+
+.carousel .list .item:nth-child(1) .content .intro{
+    animation-delay: 1.2s !important;
+}
+.carousel .list .item:nth-child(1) .content .name{
+    animation-delay: 1.4s !important;
+}
+
+.carousel .list .item:nth-child(1) .content .post{
+    animation-delay: 1.6s !important;
+}
+
+.carousel .list .item:nth-child(1) .content .text{
+    animation-delay: 1.8s !important;
+}
+
+.carousel .list .item:nth-child(1) .content .buttons{
+    animation-delay: 2s !important;
+}
+
+/* create animation when next click */
+.carousel.next .list .item:nth-child(1) img{
+    width: 150px;
+    height: 220px;
+    left: 50%;
+    bottom: 50px;
+    position: absolute;
+    border-radius: 20px;
+    animation: showImage 0.5s linear 1 forwards;
+}
+@keyframes showImage{
+    to{
+        width: 100%;
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+}
+
+.carousel.next .thumbnail .item:nth-last-child(1){
+    overflow: hidden;
+    animation: showThumbnail 0.5s linear 1 forwards;
+}
+
+.carousel.prev .list .item img{
+    z-index: 111;
+}
+
+@keyframes showThumbnail{
+    form{
+        width: 0;
+        opacity: 0;
+    }
+}
+
+.carousel.next .thumbnail{
+    animation: effectNext 0.5s linear 1 forwards;
+}
+
+@keyframes effectNext{
+    from{
+        transform: translateX(150px);
+    }
+}
+
+
+/* running time */
+.carousel .time{
+    position: absolute;
+    width: 0%;
+    height: 4px;
+    top: 0;
+    left: 0;
+    z-index: 1111;
+    background-color: green;
+
+}
+
+
+.carousel.next .time,
+.carousel.prev .time{
+    animation: runningTime 2s linear 1 forwards;
+}
+@keyframes runningTime{
+    from{
+        width: 100%;
+    }
+    to{
+        width: 0%;
+    }
+
+}
+
+.carousel.prev .list .item:nth-child(2){
+    z-index: 2;
+}
+
+.carousel.prev .list .item:nth-child(2) img{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: outFrame 0.5s linear 1 forwards;
+}
+@keyframes outFrame{
+    to{
+        width: 150px;
+        height: 220px;
+        border-radius: 20px;
+        bottom: 50px;
+        left: 50%;
+    }
+}
+
+.carousel.prev .thumbnail .item:nth-child(1){
+    overflow: hidden;
+    opacity: 0;
+    animation: showThumbnail 0.5s linear 1 forwards;
+}
+.carousel.next .arrows button,
+.carousel.prev .arrows button{
+    pointer-events: none;
+}
+
+.carousel.prev .list .item:nth-child(2) .content .intro,
+.carousel.prev .list .item:nth-child(2) .content .name,
+.carousel.prev .list .item:nth-child(2) .content .post,
+.carousel.prev .list .item:nth-child(2) .content .text,
+.carousel.prev .list .item:nth-child(2) .content .buttons
+{
+    animation: contentOut 1.5s linear 1 forwards !important;
+}
+@keyframes contentOut{
+    to{
+        transform: translateY(-150px);
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+
+.side-menu-bar{
+    display: none;
+}
+
+@media screen and (max-width:678px) {
+    .carousel .list .item .content{
+        padding: 0%;
+    }
+    .carousel .list .item .content .title{
+        font-size: 30px;
+    }
+    
+
+
+    header{
+        padding: 15px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav{
+        display: none;
+    }
+    .logo{
+        display: flex;
+        width: 100%;
+        justify-content: end;
+        font-weight:600;
+        font-size: 2rem;
+        text-transform: uppercase;
+    }
+    .menu-btn{
+        font-size: 2.4rem;
+        color: rgb(3, 247, 3);
+        z-index: 1111111;
+        padding-top: 7px;
+    }
+    .side-menu-bar{
+        display: block;
+        margin-top: -135px;
+        position: absolute;
+        top:0;
+        left: 0;
+        text-align: center;
+        width: 100%;
+        height: max-content;
+        background-color: #d2d0d0bc;
+        transition: all 0.5s;
+        opacity: 0;
+        z-index: 111111;
+    }
+    .side-menu-bar ul{
+        padding-top: 20px;
+        width: 100%;
+        height: 100%;
+        margin: 0%;
+        list-style: none;
+    }
+    .side-menu-bar ul li a{
+        height: 100%;
+        display: block;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        font-family:'Barlow Condensed', sans-serif;
+        color: rgb(4, 252, 4);
+        padding-bottom: 20px ;
+    }
+    .active-side-menu{
+        margin-top: 0px;
+        opacity: 1;
+    }
+}
